@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><ootb-template>
+    <template-metadata name="interface_config">
+        <template-details>
+            <description/>
+            <author>prem</author>
+            <tag-list>
+                <tag>interface</tag>
+            </tag-list>
+        </template-details>
+        <parameter-metadata>
+            <param-group cliName="cli command set" isMandatory="true" name="interface_config parameters">
+                <description>Parameters for interface_config</description>
+                <parameter name="InterfaceName">
+                    <description>Interface Name</description>
+                    <default-value label="Interface Name"/>
+                    <data-type>String</data-type>
+                    <mandatory>true</mandatory>
+                    <isGlobal>false</isGlobal>
+                    <syntax>
+                        <pattern/>
+                    </syntax>
+                    <isGlobalVariable>false</isGlobalVariable>
+                </parameter>
+                <parameter name="Description">
+                    <description>Description</description>
+                    <default-value label="Description"/>
+                    <data-type>String</data-type>
+                    <mandatory>false</mandatory>
+                    <isGlobal>false</isGlobal>
+                    <syntax>
+                        <pattern/>
+                    </syntax>
+                    <isGlobalVariable>false</isGlobalVariable>
+                </parameter>
+                <parameter name="Interfaceip">
+                    <description>Interface IP Address</description>
+                    <default-value label="IP Address"/>
+                    <data-type>IPv4 Address</data-type>
+                    <mandatory>true</mandatory>
+                    <isGlobal>false</isGlobal>
+                    <syntax>
+                        <pattern/>
+                    </syntax>
+                    <isGlobalVariable>false</isGlobalVariable>
+                </parameter>
+                <parameter name="Subnetmask">
+                    <description>Subnetmask</description>
+                    <default-value label="Subnetmask"/>
+                    <data-type>IPv4 Address</data-type>
+                    <mandatory>true</mandatory>
+                    <isGlobal>false</isGlobal>
+                    <syntax>
+                        <pattern/>
+                    </syntax>
+                    <isGlobalVariable>false</isGlobalVariable>
+                </parameter>
+            </param-group>
+        </parameter-metadata>
+    </template-metadata>
+    <config>
+        <device-filtering-details>
+            <family value="Routers/Cisco Network Convergence System 540 Series Routers,Routers/Cisco Network Convergence System 540L Series Routers,Routers/Cisco 8000 Series Routers,Wireless Controller/Cisco 5760 Series Wireless LAN Controller">
+                <min-supported-imageversion value=""/>
+            </family>
+        </device-filtering-details>
+        <cli name="cli command set">
+            <clicommand>#if (${InterfaceName})
+    interface ${InterfaceName}
+    #if (${Description} != "")
+        description ${Description}
+    #end
+    ipv4 address ${Interfaceip} ${Subnetmask}
+#end</clicommand>
+        </cli>
+    </config>
+</ootb-template>

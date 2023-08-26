@@ -1,0 +1,32 @@
+# payload in CLI command
+gnmic -a 10.58.244.88:57400 -u xxx -p xxx --insecure --encoding json_ietf set --update-path 'Cisco-IOS-XR-ifmgr-cfg:/interface-configurations/interface-configuration[active=act][interface-name=TenGigE0/0/0/7]/Cisco-IOS-XR-ipv4-io-cfg:ipv4-network/addresses/primary/address' --update-value '10.10.10.1' --update-path 'Cisco-IOS-XR-ifmgr-cfg:/interface-configurations/interface-configuration[active=act][interface-name=TenGigE0/0/0/7]/Cisco-IOS-XR-ipv4-io-cfg:ipv4-network/addresses/primary/netmask' --update-value '255.255.255.0' --update-path 'Cisco-IOS-XR-ifmgr-cfg:/interface-configurations/interface-configuration[active=act][interface-name=TenGigE0/0/0/7]/description' --update-value 'Sample description' --print-request
+
+----------------------------------
+
+# payload in external file
+gnmic -a 10.58.244.88:57400 -u xxx -p xxx --insecure --encoding json_ietf set --update-path 'Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration[active=act][interface-name=TenGigE0/0/0/7]' --update-file ./payload.json --print-request
+
+----
+Output:
+
+Set Request:
+{
+  "update": [
+    {
+      "path": "Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration[active=act][interface-name=TenGigE0/0/0/7]",
+      "val": "json_ietf_val:\"{\\\"Cisco-IOS-XR-ipv4-io-cfg:ipv4-network\\\":{\\\"addresses\\\":{\\\"primary\\\":{\\\"address\\\":\\\"172.20.110.1\\\",\\\"netmask\\\":\\\"255.255.255.0\\\"}}},\\\"active\\\":\\\"act\\\",\\\"interface-name\\\":\\\"TenGigE0/0/0/7\\\",\\\"description\\\":\\\"Description test\\\"}\""
+    }
+  ]
+}
+Set Response:
+{
+  "source": "10.58.244.88:57400",
+  "timestamp": 1693060837147479021,
+  "time": "2023-08-26T16:40:37.147479021+02:00",
+  "results": [
+    {
+      "operation": "UPDATE",
+      "path": "Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration[active=act][interface-name=TenGigE0/0/0/7]"
+    }
+  ]
+}

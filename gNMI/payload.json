@@ -1,0 +1,13 @@
+{
+  "Cisco-IOS-XR-ipv4-io-cfg:ipv4-network": {
+    "addresses": {
+      "primary": {
+        "address": "172.20.110.1",
+        "netmask": "255.255.255.0"
+      }
+    }
+  },
+  "active": "act",
+  "interface-name": "TenGigE0/0/0/7",
+  "description": "Description test"
+}
